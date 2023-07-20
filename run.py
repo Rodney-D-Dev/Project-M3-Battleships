@@ -68,7 +68,11 @@ def make_guess(board):
     """
     if board.type == "Computer":
         row,col = int(input("Enter Row: ")) , int(input("Enter Colum: ")) 
-    valid_coordinates(board,row,col) 
+    elif board.type == "Player":
+        row,col = random_point(board)
+    
+    valid_coordinates(board,row,col)
+
 
 def play_game(computer_board,player_board):
     """
@@ -83,7 +87,9 @@ def play_game(computer_board,player_board):
             break
         computer_board.print()
         #then computer
-    
+        print(f"{computer_board.name}'s turn")
+        make_guess(player_board)
+
 player_board = Game_board(5,9,"test101",type="Player")
 computer_board = Game_board(5,10,"test101",type="Computer")
 populate_board(player_board)
