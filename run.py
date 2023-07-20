@@ -40,16 +40,21 @@ class Game_board:
         
 def random_point(board):
     """
-    helper function to randomise cords for computer
+    helper function to randomise cords on the game board
     """
     x = randint(0, board.size -1)
     y = randint(0, board.size -1)
     return (x,y)
 
-def valid_coordinates():
-    pass
+def populate_board(board):
+    """
+    function to place ships at random points on the board 
+    """
+    while len(board.ships) < board.num_ships:
+        x,y = random_point(board)
+        board.add_ship(x,y)
 
-def populate_board():
+def valid_coordinates():
     pass
 
 def make_guess():
@@ -57,3 +62,8 @@ def make_guess():
 
 def play_game():
     pass
+
+player_board = Game_board(10,7,"test101",type="player")
+populate_board(player_board)
+
+player_board.print()
