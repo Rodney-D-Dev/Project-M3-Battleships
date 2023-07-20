@@ -54,23 +54,30 @@ def populate_board(board):
         x,y = random_point(board)
         board.add_ship(x,y)
 
-def valid_coordinates(board,x,y):
+def valid_coordinates(board,row,col):
     """
     function to check if coordinates are within the game board and have not been already guessed.
     """
-    if (x,y) not in board.guesses:
-        result = board.guess(x,y)
+    if (row,col) not in board.guesses:
+        result = board.guess(row,col)
         print(result)
 
-def make_guess():
-    pass
+def make_guess(board):
+    """
+    function to guess ship coords 
+    """
+    if board.type == "Computer":
+        row,col = int(input("Enter Row: ")) , int(input("Enter Colum: ")) 
+    valid_coordinates(board,row,col) 
 
 def play_game():
     pass
 
-player_board = Game_board(5,9,"test101",type="player")
+player_board = Game_board(5,9,"test101",type="Player")
+computer_board = Game_board(5,10,"test101",type="Computer")
 populate_board(player_board)
-
+populate_board(computer_board)
 player_board.print()
-valid_coordinates(player_board,3,2)
+computer_board.print()
+make_guess(computer_board)
 player_board.print()
