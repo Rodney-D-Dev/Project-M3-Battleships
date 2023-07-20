@@ -54,8 +54,13 @@ def populate_board(board):
         x,y = random_point(board)
         board.add_ship(x,y)
 
-def valid_coordinates():
-    pass
+def valid_coordinates(board,x,y):
+    """
+    function to check if coordinates are within the game board and have not been already guessed.
+    """
+    if (x,y) not in board.guesses:
+        result = board.guess(x,y)
+        print(result)
 
 def make_guess():
     pass
@@ -63,7 +68,9 @@ def make_guess():
 def play_game():
     pass
 
-player_board = Game_board(10,7,"test101",type="player")
+player_board = Game_board(5,9,"test101",type="player")
 populate_board(player_board)
 
+player_board.print()
+valid_coordinates(player_board,3,2)
 player_board.print()
