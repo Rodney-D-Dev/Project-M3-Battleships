@@ -70,14 +70,22 @@ def make_guess(board):
         row,col = int(input("Enter Row: ")) , int(input("Enter Colum: ")) 
     valid_coordinates(board,row,col) 
 
-def play_game():
-    pass
-
+def play_game(computer_board,player_board):
+    """
+    function to handle game flow or loop
+    """
+    while True:
+        #player goes first
+        print(f"{player_board.name}'s turn")
+        make_guess(computer_board)
+        if computer_board.all_ships_sunk():
+            print(f"{player_board.name} Wins!!")
+            break
+        computer_board.print()
+        #then computer
+    
 player_board = Game_board(5,9,"test101",type="Player")
 computer_board = Game_board(5,10,"test101",type="Computer")
 populate_board(player_board)
 populate_board(computer_board)
-player_board.print()
-computer_board.print()
-make_guess(computer_board)
-player_board.print()
+play_game(computer_board,player_board)
