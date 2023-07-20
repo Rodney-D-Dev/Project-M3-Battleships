@@ -38,8 +38,13 @@ class Game_board:
     def all_ships_sunk(self):
         return all(ship in self.guesses for ship in self.ships)
         
-def random_point(size):
-    pass
+def random_point(board):
+    """
+    helper function to randomise cords for computer
+    """
+    x = randint(0, board.size -1)
+    y = randint(0, board.size -1)
+    return (x,y)
 
 def valid_coordinates():
     pass
