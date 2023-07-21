@@ -1,4 +1,6 @@
-from random import randint 
+from random import randint
+
+scores = {"Computer":0, "Player": 0}
 
 class Game_board:
     """
@@ -33,8 +35,9 @@ class Game_board:
             print("Error: you cannot add any more ships!")
         else:
             self.ships.append((x,y))
-            if self.type == "player":
+            if self.type == "Player":
                 self.board[x][y] = "@"
+
     def all_ships_sunk(self):
         return all(ship in self.guesses for ship in self.ships)
         
@@ -67,7 +70,8 @@ def valid_coordinates(board,row,col):
 
 def make_guess(board):
     """
-    function to guess ship coords 
+    function to guess ship coords if the board is a computer board asks for user input
+    else picks random point on board
     """
     if board.type == "Computer":
         while True:
@@ -80,31 +84,56 @@ def make_guess(board):
                 print(f"Invalid input. Please enter number in the rage of 0 to {board.size -1}.")
     elif board.type == "Player":
         row,col = random_point(board)
-    
     valid_coordinates(board,row,col)
 
 def play_game(computer_board,player_board):
     """
-    function to handle game flow or loop
+    function to handle game flow or loop handles playing turn and prints info to show whats happening and
+    handles win condition
     """
     while True:
-        #player goes first
+        
         print(f"{player_board.name}'s turn")
+        print("_" * 60)
         make_guess(computer_board)
         if computer_board.all_ships_sunk():
             print(f"{player_board.name} Wins!!")
             break
+        print("_" * 60)
         computer_board.print()
-        #then computer
+        print("_" * 60)
         print(f"{computer_board.name}'s turn")
+        print("_" * 60)
         make_guess(player_board)
         if player_board.all_ships_sunk():
             print(f"{computer_board.name} Wins!!")
             break
+        print("_" * 60)
         player_board.print()
+        print("_" * 60)
 
-player_board = Game_board(5,9,"test101",type="Player")
-computer_board = Game_board(5,10,"Computer",type="Computer")
-populate_board(player_board)
-populate_board(computer_board)
-play_game(computer_board,player_board)
+def game_start():
+    """
+    function to handle game setup and start game with welcome message.
+    """
+    size = 6
+    num_ships = 5
+    scores["computer"] = 0
+    scores["player"] = 0
+    print("_" * 60)
+    print("welcome to BattleShips")
+    print(f"Board Size: {size}. Number of ships: {num_ships}")
+    print(" Top left corner is row: 0, col: 0")
+    print("_" * 60)
+    player_name = input("please enter your name \n")
+    print("_" * 60)
+
+    computer_board = Game_board(size, num_ships, "Computer", type="Computer")
+    player_board = Game_board(size, num_ships, player_name, type="Player")
+
+    for _ in range(num_ships):
+        populate_board(player_board)
+        populate_board(computer_board)
+    play_game(computer_board,player_board)
+
+game_start()
