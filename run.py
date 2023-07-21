@@ -67,7 +67,14 @@ def make_guess(board):
     function to guess ship coords 
     """
     if board.type == "Computer":
-        row,col = int(input("Enter Row: ")) , int(input("Enter Colum: ")) 
+        while True:
+            try:
+                row,col = int(input("Enter Row: ")) , int(input("Enter Colum: "))
+                if row > (board.size -1) or col > (board.size -1):
+                    raise ValueError
+                break
+            except ValueError:
+                print(f"Invalid input. Please enter number in the rage of 0 to {board.size -1}.")
     elif board.type == "Player":
         row,col = random_point(board)
     
@@ -89,9 +96,13 @@ def play_game(computer_board,player_board):
         #then computer
         print(f"{computer_board.name}'s turn")
         make_guess(player_board)
+        if player_board.all_ships_sunk():
+            print(f"{computer_board.name} Wins!!")
+            break
+        player_board.print()
 
 player_board = Game_board(5,9,"test101",type="Player")
-computer_board = Game_board(5,10,"test101",type="Computer")
+computer_board = Game_board(5,10,"Computer",type="Computer")
 populate_board(player_board)
 populate_board(computer_board)
 play_game(computer_board,player_board)
