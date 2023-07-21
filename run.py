@@ -61,6 +61,9 @@ def valid_coordinates(board,row,col):
     if (row,col) not in board.guesses:
         result = board.guess(row,col)
         print(result)
+    elif (row,col) in board.guesses:
+        print(f"You have alredy guessed {row} and {col}!")
+        make_guess(board)
 
 def make_guess(board):
     """
@@ -79,7 +82,6 @@ def make_guess(board):
         row,col = random_point(board)
     
     valid_coordinates(board,row,col)
-
 
 def play_game(computer_board,player_board):
     """
