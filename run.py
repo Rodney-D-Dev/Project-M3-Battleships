@@ -26,9 +26,10 @@ class Game_board:
 
         if(x,y) in self.ships:
             self.board[x][y] = "*"
-            return "Hit"
+            return "Hit!"
+            
         else:
-            return "Miss"
+            return "Miss!"
 
     def add_ship(self,x,y, type = "computer"):
         if len(self.ships) >= self.num_ships:
@@ -63,16 +64,23 @@ def valid_coordinates(board,row,col):
     """
     if (row,col) not in board.guesses:
         result = board.guess(row,col)
-        print(result)
+        if result == "Hit!" :
+            print(result)
+            return True
+        else :
+            print(result)
+            return False        
     elif (row,col) in board.guesses:
         print(f"You have alredy guessed {row} and {col}!")
         make_guess(board)
-
+    return result
 def make_guess(board):
     """
     function to guess ship coords if the board is a computer board asks for user input
     else picks random point on board
     """
+    add_score = False
+
     if board.type == "Computer":
         while True:
             try:
@@ -84,7 +92,10 @@ def make_guess(board):
                 print(f"Invalid input. Please enter number in the rage of 0 to {board.size -1}.")
     elif board.type == "Player":
         row,col = random_point(board)
-    valid_coordinates(board,row,col)
+    
+    if valid_coordinates(board,row,col):
+        add_score = True
+    return add_score
 
 def play_game(computer_board,player_board):
     """
@@ -95,22 +106,29 @@ def play_game(computer_board,player_board):
         
         print(f"{player_board.name}'s turn")
         print("_" * 60)
-        make_guess(computer_board)
+        if make_guess(computer_board):
+            scores["Player"]+=1
         if computer_board.all_ships_sunk():
             print(f"{player_board.name} Wins!!")
             break
         print("_" * 60)
+        print(f"{computer_board.name}'s Board")
         computer_board.print()
         print("_" * 60)
         print(f"{computer_board.name}'s turn")
         print("_" * 60)
-        make_guess(player_board)
+        if make_guess(player_board):
+            scores["Computer"]+=1
         if player_board.all_ships_sunk():
             print(f"{computer_board.name} Wins!!")
             break
         print("_" * 60)
+        print(f"{player_board.name}'s Board")
         player_board.print()
         print("_" * 60)
+        print("Scores:")
+        print(f"{player_board.name}",scores["Player"])
+        print(f"{computer_board.name}", scores["Computer"])
 
 def game_start():
     """
