@@ -95,14 +95,14 @@ def make_guess(board):
     if board.type == "Computer":
         while True:
             try:
-                row, col = int(input("Enter Row: ")),
+                row, col = Int(input("Enter Row: ")),
                 int(input("Enter Colum: "))
                 if row > (board.size - 1) or col > (board.size - 1):
                     raise ValueError
                 break
             except ValueError:
-                print(f"Invalid input.Please enter number in the rage of 0 to {board.size - 1}.")
-                
+                print(f"Invalid Input. Please enter number in the rage of 0 to {board.size - 1}.")
+
     elif board.type == "Player":
         row, col = random_point(board)
     if valid_coordinates(board, row, col):
