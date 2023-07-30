@@ -70,6 +70,7 @@ def valid_coordinates(board, row, col):
     and have not been already guessed.
     """
     if (row, col) not in board.guesses:
+        global result
         result = board.guess(row, col)
         if result == "Hit!":
             print(result)
