@@ -95,8 +95,8 @@ def make_guess(board):
     if board.type == "Computer":
         while True:
             try:
-                row, col = int(input("Enter Row:\n")),
-                int(input("Enter Colum:\n"))
+                row, col = int(input("Enter Row: ")),
+                int(input("Enter Colum: "))
                 if row > (board.size - 1) or col > (board.size - 1):
                     raise ValueError
                 break
