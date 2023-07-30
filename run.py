@@ -95,13 +95,13 @@ def make_guess(board):
     if board.type == "Computer":
         while True:
             try:
-                row, col = int(input("Enter Row: ")),
-                int(input("Enter Colum: "))
+                row, col = int(input("Enter Row:\n")),
+                int(input("Enter Colum:\n"))
                 if row > (board.size - 1) or col > (board.size - 1):
                     raise ValueError
                 break
             except ValueError:
-                print(f"Invalid input.Please enter number in the rage of 0 to {board.size -1}.")
+                print(f"Invalid input.Please enter number in the rage of 0 to {board.size - 1}.")
     elif board.type == "Player":
         row, col = random_point(board)
     if valid_coordinates(board, row, col):
@@ -162,7 +162,7 @@ def game_start():
     print(f"Board Size: {size}. Number of ships: {num_ships}")
     print(" Top left corner is row: 0, col: 0")
     print("_" * 60)
-    player_name = input("Please enter your name \n")
+    player_name = input("Please enter your name:\n")
     print("_" * 60)
 
     computer_board = Game_board(size, num_ships, "Computer", type="Computer")
