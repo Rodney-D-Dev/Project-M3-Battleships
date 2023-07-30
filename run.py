@@ -77,7 +77,6 @@ def valid_coordinates(board, row, col):
         else:
             print(result)
             return False
-
     elif (row, col) in board.guesses:
         print(f"You have alredy guessed {row} and {col}!")
         make_guess(board)
