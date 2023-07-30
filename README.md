@@ -3,59 +3,42 @@ Battleships is a Python terminal game.
 users can try and beat the computer by finding all the battleships on the computers board 
 before the computer finds the players battleships.
 
+Live website[here](https://m3battleships-500bfc128fe5.herokuapp.com/)
 
+![Am I responsive image](/images/battleshipsresposive.png)
 
-#Features
+# How to play
+* player board and computer board are generated randomly
+* Player can see where theyere ships are. witch are indicated with @ sign
+* The computer ships are hidden 
+* Guesses are shown with X sign and hits are show with a * sign
+* Player and computer take turn and guess ship locations 
+* The winner is the one that sinks all ships 
+
+Info about playing battleships can be found in wiki (https://en.wikipedia.org/wiki/Battleship_(game))
+
+# Features
 * Random board generation 
 * User inputs validation
 * Scores 
 * win condition 
 
-#Testing
+# Testing
 Manualy tested by
 * Using PEP8 making sure no issues with code
 * Inputing incorect cordinates 
 * Inputing strings when numbers are expected 
 
-#Deployemnt
+# Deployemnt
+project deployed on heroku
+* Create new app
+* navigate to settings 
+* set up Config Vars
+* add buildpacks Python and NodeJs in order
+* navigate to deploy scroll down to Deployment method
+* connect to github and connect project 
+* scroll down and click Deploy
 
-
-#Credits
+# Credits
 * Code institue for game idea and start of point 
 * stack overflow for code ideas and solving code issues
-
-
-
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome USER_NAME,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
