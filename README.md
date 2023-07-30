@@ -1,3 +1,33 @@
+## Battleships
+Battleships is a Python terminal game.
+users can try and beat the computer by finding all the battleships on the computers board 
+before the computer finds the players battleships.
+
+
+
+#Features
+* Random board generation 
+* User inputs validation
+* Scores 
+* win condition 
+
+#Testing
+Manualy tested by
+* Using PEP8 making sure no issues with code
+* Inputing incorect cordinates 
+* Inputing strings when numbers are expected 
+
+#Deployemnt
+
+
+#Credits
+* Code institue for game idea and start of point 
+* stack overflow for code ideas and solving code issues
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome USER_NAME,
