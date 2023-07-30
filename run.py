@@ -101,8 +101,8 @@ def make_guess(board):
                     raise ValueError
                 break
             except ValueError:
-                print(f"Invalid input.Please enter number in
-                      the rage of 0 to {board.size - 1}.")
+                print(f"Invalid input.Please enter number in"
+                      "the rage of 0 to {board.size - 1}.")
     elif board.type == "Player":
         row, col = random_point(board)
     if valid_coordinates(board, row, col):
